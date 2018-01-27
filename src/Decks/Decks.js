@@ -33,16 +33,19 @@ export default function Decks() {
         const deck = decks[item];
 
         return (
-            <TouchableOpacity onPress={() => console.log('pressed', deck)}>
-                <View style={styles.item}>
+            <View style={styles.itemContainer}>
+                <TouchableOpacity
+                    style={styles.itemContent}
+                    onPress={() => console.log('pressed', deck)}
+                >
                     <Text style={styles.itemTitle}>
                         {deck.title}
                     </Text>
                     <Text>
                         {`${deck.questions.length} cards`}
                     </Text>
-                </View>
-            </TouchableOpacity>
+                </TouchableOpacity>
+            </View>
         );
     };
 
@@ -63,9 +66,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff'
     },
-    item: {
+    itemContainer: {
         borderBottomColor: '#ccc',
-        borderBottomWidth: 1,
+        borderBottomWidth: 1
+    },
+    itemContent: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

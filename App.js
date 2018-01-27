@@ -1,23 +1,74 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
 
-export default class App extends React.Component {
-  render() {
+import {Platform, View, StatusBar} from 'react-native';
+import {Constants} from 'expo';
+
+import {TabNavigator} from 'react-navigation';
+
+import {Ionicons, FontAwesome} from '@expo/vector-icons';
+
+import Decks from './src/Decks/Decks';
+import NewDeck from './src/NewDeck/NewDeck';
+
+
+function UdaciStatusBar({backgroundColor, ...props}) {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+        <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+            <StatusBar
+                translucent
+                backgroundColor={backgroundColor}
+                {...props}
+            />
+        </View>
     );
-  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tabs = TabNavigator({
+        Decks: {
+            screen: Decks,
+            navigationOptions: {
+                tabBarLabel: 'Decks',
+                tabBarIcon: ({tintColor}) => <Ionicons name='ios-albums' size={30} color={tintColor}/>
+            }
+        },
+        NewDeck: {
+            screen: NewDeck,
+            navigationOptions: {
+                tabBarLabel: 'Add NewDeck',
+                tabBarIcon: ({tintColor}) => <FontAwesome name='plus-square' size={30} color={tintColor}/>
+            }
+        }
+    },
+    {
+        navigationOptions: {
+            header: null
+        },
+        tabBarOptions: {
+            activeTintColor: Platform.OS === 'ios' ? '#ccc' : '#fff',
+            style: {
+                height: 56,
+                backgroundColor: Platform.OS === 'ios' ? '#fff' : '#ccc',
+                shadowColor: 'rgba(0, 0, 0, 0.24)',
+                shadowOffset: {
+                    width: 0,
+                    height: 3
+                },
+                shadowRadius: 6,
+                shadowOpacity: 1
+            }
+        }
+    });
+
+export default class App extends Component {
+    render() {
+        return (
+            <View style={{flex: 1}}>
+                <UdaciStatusBar
+                    backgroundColor={'#e5e5e5'}
+                    barStyle="light-content"
+                />
+                <Tabs/>
+            </View>
+        );
+    }
+}

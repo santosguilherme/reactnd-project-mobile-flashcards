@@ -12,7 +12,7 @@ export default function NewDeck() {
         <View style={styles.container}>
             <Text>What is the title of your new deck?</Text>
             <View style={styles.inputContainer}>
-                <TextInput/>
+                <TextInput style={styles.input}/>
             </View>
             <TextButton>
                 Submit
@@ -34,5 +34,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 15,
         marginBottom: 15
+    },
+    input: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#888'
     }
 });

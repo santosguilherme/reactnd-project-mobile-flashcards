@@ -2,8 +2,7 @@ import React from 'react';
 
 import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 
-
-export default function Decks() {
+export default function Decks(props) {
     const decks = {
         React: {
             title: 'React',
@@ -29,6 +28,10 @@ export default function Decks() {
         }
     };
 
+    const handleClickDeck = deck => {
+        props.navigation.navigate('DeckDetails', {deck});
+    };
+
     const renderItem = ({item}) => {
         const deck = decks[item];
 
@@ -36,7 +39,7 @@ export default function Decks() {
             <View style={styles.itemContainer}>
                 <TouchableOpacity
                     style={styles.itemContent}
-                    onPress={() => console.log('pressed', deck)}
+                    onPress={() => handleClickDeck(deck)}
                 >
                     <Text style={styles.itemTitle}>
                         {deck.title}

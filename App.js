@@ -3,12 +3,13 @@ import React, {Component} from 'react';
 import {Platform, View, StatusBar} from 'react-native';
 import {Constants} from 'expo';
 
-import {TabNavigator} from 'react-navigation';
+import {StackNavigator, TabNavigator} from 'react-navigation';
 
 import {Ionicons, FontAwesome} from '@expo/vector-icons';
 
 import Decks from './src/Decks/Decks';
 import NewDeck from './src/NewDeck/NewDeck';
+import DeckDetails from './src/DeckDetails/DeckDetails';
 
 
 function UdaciStatusBar({backgroundColor, ...props}) {
@@ -59,6 +60,21 @@ const Tabs = TabNavigator({
         }
     });
 
+const MainNavigator = StackNavigator({
+    Home: {
+        screen: Tabs,
+    },
+    DeckDetails: {
+        screen: DeckDetails,
+        navigationOptions: {
+            headerTintColor: '#ccc',
+            headerStyle: {
+                backgroundColor: '#000',
+            }
+        }
+    }
+});
+
 export default class App extends Component {
     render() {
         return (
@@ -67,7 +83,7 @@ export default class App extends Component {
                     backgroundColor={'#e5e5e5'}
                     barStyle="light-content"
                 />
-                <Tabs/>
+                <MainNavigator/>
             </View>
         );
     }

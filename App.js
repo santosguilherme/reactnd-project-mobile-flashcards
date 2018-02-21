@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Platform, View, StatusBar} from 'react-native';
+import {Platform, View, StatusBar, SafeAreaView} from 'react-native';
 import {Constants} from 'expo';
 
 import {StackNavigator, TabNavigator} from 'react-navigation';
@@ -10,19 +10,8 @@ import {Ionicons, FontAwesome} from '@expo/vector-icons';
 import Decks from './src/Decks/Decks';
 import NewDeck from './src/NewDeck/NewDeck';
 import DeckDetails from './src/DeckDetails/DeckDetails';
+import Quiz from './src/Quiz/Quiz';
 
-
-function UdaciStatusBar({backgroundColor, ...props}) {
-    return (
-        <View style={{backgroundColor, height: Constants.statusBarHeight}}>
-            <StatusBar
-                translucent
-                backgroundColor={backgroundColor}
-                {...props}
-            />
-        </View>
-    );
-}
 
 const Tabs = TabNavigator({
         Decks: {
@@ -41,9 +30,7 @@ const Tabs = TabNavigator({
         }
     },
     {
-        navigationOptions: {
-            header: null
-        },
+        navigationOptions: {},
         tabBarOptions: {
             activeTintColor: Platform.OS === 'ios' ? '#ccc' : '#fff',
             style: {
@@ -63,14 +50,26 @@ const Tabs = TabNavigator({
 const MainNavigator = StackNavigator({
     Home: {
         screen: Tabs,
+        navigationOptions: {
+            title: 'Flashcards'
+        }
     },
     DeckDetails: {
         screen: DeckDetails,
+        navigationOptions: {}
+    },
+    Quiz: {
+        screen: Quiz,
         navigationOptions: {
-            headerTintColor: '#ccc',
-            headerStyle: {
-                backgroundColor: '#000',
-            }
+            title: 'Quiz',
+        }
+    }
+}, {
+    navigationOptions: {
+        headerBackTitle: null,
+        headerTintColor: '#fff',
+        headerStyle: {
+            backgroundColor: 'red',
         }
     }
 });
@@ -78,13 +77,13 @@ const MainNavigator = StackNavigator({
 export default class App extends Component {
     render() {
         return (
-            <View style={{flex: 1}}>
-                <UdaciStatusBar
-                    backgroundColor={'#e5e5e5'}
+            <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+                <StatusBar
+                    backgroundColor={'yellow'}
                     barStyle="light-content"
                 />
                 <MainNavigator/>
-            </View>
+            </SafeAreaView>
         );
     }
 }

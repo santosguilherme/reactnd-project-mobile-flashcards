@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 import {StyleSheet, View, Text} from 'react-native';
+import DeckCard from '../Decks/DeckCard';
+import TextButton from '../commons/components/TextButton';
 
 
 class DeckDetails extends Component {
@@ -12,10 +14,29 @@ class DeckDetails extends Component {
         };
     };
 
+    handleStartQuiz = () => {
+        const {deck} = this.props.navigation.state.params;
+
+        this.props.navigation.navigate('Quiz', {deck});
+
+    };
+
     render() {
+        const {deck} = this.props.navigation.state.params;
+
         return (
             <View>
-                <Text>Deck details</Text>
+                <View>
+                    <DeckCard deck={deck}/>
+                </View>
+                <View>
+                    <TextButton>
+                        Add card
+                    </TextButton>
+                    <TextButton onPress={this.handleStartQuiz}>
+                        Start quiz
+                    </TextButton>
+                </View>
             </View>
         );
     }

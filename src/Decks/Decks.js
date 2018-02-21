@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
+import DeckCard from './DeckCard';
 
 export default function Decks(props) {
     const decks = {
@@ -37,16 +38,8 @@ export default function Decks(props) {
 
         return (
             <View style={styles.itemContainer}>
-                <TouchableOpacity
-                    style={styles.itemContent}
-                    onPress={() => handleClickDeck(deck)}
-                >
-                    <Text style={styles.itemTitle}>
-                        {deck.title}
-                    </Text>
-                    <Text>
-                        {`${deck.questions.length} cards`}
-                    </Text>
+                <TouchableOpacity onPress={() => handleClickDeck(deck)}>
+                    <DeckCard deck={deck}/>
                 </TouchableOpacity>
             </View>
         );
@@ -72,16 +65,5 @@ const styles = StyleSheet.create({
     itemContainer: {
         borderBottomColor: '#ccc',
         borderBottomWidth: 1
-    },
-    itemContent: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20
-    },
-    itemTitle: {
-        fontSize: 18,
-        fontWeight: '600',
-        marginBottom: 5
     }
 });

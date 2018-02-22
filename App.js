@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-import {Platform, View, StatusBar, SafeAreaView} from 'react-native';
-import {Constants} from 'expo';
+import {Platform, ActivityIndicator, StatusBar, SafeAreaView} from 'react-native';
 import {Provider} from 'react-redux';
 
 import {StackNavigator, TabNavigator} from 'react-navigation';
@@ -12,8 +11,10 @@ import Decks from './src/Decks/Decks';
 import NewDeck from './src/NewDeck/NewDeck';
 import DeckDetails from './src/DeckDetails/DeckDetails';
 import Quiz from './src/Quiz/Quiz';
-import configureStore from './src/redux/store';
 import NewCard from './src/NewCard/NewCard';
+
+import {PersistGate} from 'redux-persist/es/integration/react';
+import configureStore from './src/redux/store';
 
 
 const Tabs = TabNavigator({
@@ -83,20 +84,26 @@ const MainNavigator = StackNavigator({
     }
 });
 
-const store = configureStore();
+const {persistor, store} = configureStore();
 
 export default class App extends Component {
-    componentDidMount() {
-
+    renderApp() {
+        return (
+            <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+                <StatusBar/>
+                <MainNavigator/>
+            </SafeAreaView>
+        );
     }
 
     render() {
         return (
             <Provider store={store}>
-                <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-                    <StatusBar/>
-                    <MainNavigator/>
-                </SafeAreaView>
+                <PersistGate
+                    loading={<ActivityIndicator/>}
+                    persistor={persistor}>
+                    {this.renderApp()}
+                </PersistGate>
             </Provider>
         );
     }

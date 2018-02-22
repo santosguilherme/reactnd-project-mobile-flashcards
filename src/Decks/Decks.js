@@ -1,33 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import {compose} from 'redux';
+import {connect} from 'react-redux';
 
 import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
+
 import DeckCard from './DeckCard';
 
-export default function Decks(props) {
-    const decks = {
-        React: {
-            title: 'React',
-            questions: [
-                {
-                    question: 'What is React?',
-                    answer: 'A library for managing user interfaces'
-                },
-                {
-                    question: 'Where do you make Ajax requests in React?',
-                    answer: 'The componentDidMount lifecycle event'
-                }
-            ]
-        },
-        JavaScript: {
-            title: 'JavaScript',
-            questions: [
-                {
-                    question: 'What is a closure?',
-                    answer: 'The combination of a function and the lexical environment within which that function was declared.'
-                }
-            ]
-        }
-    };
+import {selectors as decksSelectors} from '../redux/modules/decks';
+import Container from '../commons/components/Container';
+
+
+function Decks(props) {
+    const {decks} = props;
 
     const handleClickDeck = deck => {
         props.navigation.navigate('DeckDetails', {deck});
@@ -46,22 +32,30 @@ export default function Decks(props) {
     };
 
     return (
-        <View style={styles.container}>
+        <Container>
             <FlatList
                 data={Object.keys(decks)}
                 renderItem={renderItem}
                 keyExtractor={item => item}
             />
-        </View>
+        </Container>
     );
 }
 
+Decks.defaultProps = {
+    decks: {}
+};
+
+function mapStateToProps(state) {
+    return {
+        decks: decksSelectors.getDecks(state)
+    };
+}
+
+export default connect(mapStateToProps)(Decks);
+
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff'
-    },
     itemContainer: {
         borderBottomColor: '#ccc',
         borderBottomWidth: 1

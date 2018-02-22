@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {Text, View} from 'react-native';
 import TextButton from '../commons/components/TextButton';
+import Container from '../commons/components/Container';
 
 export default class Quiz extends Component {
     state = {
@@ -56,7 +57,7 @@ export default class Quiz extends Component {
         const {deck} = this.props.navigation.state.params;
 
         return (
-            <View>
+            <Container>
                 <View>
                     <Text>{`${questionIndex + 1}/${deck.questions.length}`}</Text>
                 </View>
@@ -94,7 +95,7 @@ export default class Quiz extends Component {
                         </Text>
                     </View>
                 )}
-            </View>
+            </Container>
         );
     }
 }

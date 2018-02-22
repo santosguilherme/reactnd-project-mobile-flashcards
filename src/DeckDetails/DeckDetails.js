@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import DeckCard from '../Decks/DeckCard';
 import TextButton from '../commons/components/TextButton';
+import Container from '../commons/components/Container';
 
 
 class DeckDetails extends Component {
@@ -12,6 +13,12 @@ class DeckDetails extends Component {
         return {
             title: deck.title
         };
+    };
+
+    handleAddCard = () => {
+        const {deck} = this.props.navigation.state.params;
+
+        this.props.navigation.navigate('NewCard', {deck});
     };
 
     handleStartQuiz = () => {
@@ -25,30 +32,22 @@ class DeckDetails extends Component {
         const {deck} = this.props.navigation.state.params;
 
         return (
-            <View>
+            <Container>
                 <View>
                     <DeckCard deck={deck}/>
                 </View>
                 <View>
-                    <TextButton>
+                    <TextButton onPress={this.handleAddCard}>
                         Add card
                     </TextButton>
                     <TextButton onPress={this.handleStartQuiz}>
                         Start quiz
                     </TextButton>
                 </View>
-            </View>
+            </Container>
         );
     }
 }
 
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff'
-    }
-});
 
 export default DeckDetails;

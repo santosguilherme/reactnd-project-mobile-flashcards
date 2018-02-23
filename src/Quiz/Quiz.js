@@ -5,6 +5,7 @@ import {Text, View} from 'react-native';
 import TextButton from '../commons/components/TextButton';
 import Container from '../commons/components/Container';
 import Feedback from './Feedback';
+import {cancelAllScheduled} from '../commons/notification/pushLocalNotification';
 
 const initialState = {
     questionIndex: 0,
@@ -26,6 +27,7 @@ export default class Quiz extends Component {
         }));
     };
 
+    //TODO: renomear esta função
     getUpdatedState = (isCorrect) => {
         this.setState(state => {
             const {questionIndex} = state;
@@ -44,6 +46,10 @@ export default class Quiz extends Component {
 
             if (isCorrect) {
                 newState.corrects = ++state.corrects;
+            }
+
+            if (newState.done) {
+                cancelAllScheduled();
             }
 
             return newState;

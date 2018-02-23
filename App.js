@@ -15,6 +15,7 @@ import NewCard from './src/NewCard/NewCard';
 
 import {PersistGate} from 'redux-persist/es/integration/react';
 import configureStore from './src/redux/store';
+import {scheduleForTomorrow} from './src/commons/notification/pushLocalNotification';
 
 
 const Tabs = TabNavigator({
@@ -87,6 +88,10 @@ const MainNavigator = StackNavigator({
 const {persistor, store} = configureStore();
 
 export default class App extends Component {
+    componentDidMount() {
+        scheduleForTomorrow();
+    }
+
     renderApp() {
         return (
             <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>

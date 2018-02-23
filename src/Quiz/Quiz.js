@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
 
 import {Text, View} from 'react-native';
+
 import TextButton from '../commons/components/TextButton';
 import Container from '../commons/components/Container';
+import Feedback from './Feedback';
+
+const initialState = {
+    questionIndex: 0,
+    showQuestion: true,
+    showAnswer: false,
+    corrects: 0,
+    done: false
+};
 
 export default class Quiz extends Component {
     state = {
-        questionIndex: 0,
-        showQuestion: true,
-        showAnswer: false,
-        corrects: 0,
-        done: false
+        ...initialState
     };
 
     handleClickSwap = () => {
@@ -20,7 +26,7 @@ export default class Quiz extends Component {
         }));
     };
 
-    getUpdatedState = (isCprrect) => {
+    getUpdatedState = (isCorrect) => {
         this.setState(state => {
             const {questionIndex} = state;
             const {deck} = this.props.navigation.state.params;
@@ -36,7 +42,7 @@ export default class Quiz extends Component {
                 ? questionIndex + 1
                 : questionIndex;
 
-            if (isCprrect) {
+            if (isCorrect) {
                 newState.corrects = ++state.corrects;
             }
 
@@ -50,6 +56,16 @@ export default class Quiz extends Component {
 
     handleIncorrectClick = () => {
         this.getUpdatedState();
+    };
+
+    handleRestartQuizClick = () => {
+        this.setState({
+            ...initialState
+        });
+    };
+
+    handleBackToDeckClick = () => {
+        this.props.navigation.goBack();
     };
 
     render() {
@@ -89,11 +105,11 @@ export default class Quiz extends Component {
                     </View>
                 )}
                 {done && (
-                    <View>
-                        <Text>
-                            {`Your score ${(corrects * 100) / deck.questions.length}%`}
-                        </Text>
-                    </View>
+                    <Feedback
+                        score={(corrects * 100) / deck.questions.length}
+                        onRestart={this.handleRestartQuizClick}
+                        onBack={this.handleBackToDeckClick}
+                    />
                 )}
             </Container>
         );

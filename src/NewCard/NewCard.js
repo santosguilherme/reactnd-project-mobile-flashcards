@@ -27,7 +27,7 @@ class NewCard extends PureComponent {
             card: {...this.state}
         });
 
-        //TODO: falta fazer a navegação
+        navigation.goBack();
     };
 
     createHandleChangeState(attribute) {

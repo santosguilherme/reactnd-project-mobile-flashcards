@@ -61,10 +61,11 @@ export default handleActions({
     },
     [ADD_CARD_TO_DECK]: (state, action) => {
         const {title, card} = action.payload;
-        const deck = state[title];
 
-        deck.questions.push(card);
-
+        const deck = {
+            ...state[title],
+            questions: [...state[title].questions, card]
+        };
         return {
             ...state,
             [title]: deck

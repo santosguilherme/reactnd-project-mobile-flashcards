@@ -7,6 +7,8 @@ import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
 
 import {selectors as decksSelectors} from '../redux/modules/decks';
 
+import {lightGray} from '../commons/styles/colors';
+
 import Container from '../commons/components/Container';
 
 import DeckCard from './DeckCard';
@@ -44,7 +46,7 @@ function Decks(props) {
 
 const styles = StyleSheet.create({
     itemContainer: {
-        borderBottomColor: '#ccc',
+        borderBottomColor: lightGray,
         borderBottomWidth: 1,
         paddingTop: 1
     }

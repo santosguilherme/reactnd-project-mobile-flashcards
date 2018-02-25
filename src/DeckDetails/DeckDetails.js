@@ -7,6 +7,8 @@ import {StyleSheet, View, Text} from 'react-native';
 
 import {selectors} from '../redux/modules/decks';
 
+import {grey} from '../commons/styles/colors';
+
 import TextButton from '../commons/components/TextButton';
 import Container from '../commons/components/Container';
 import Title from '../commons/components/Title';
@@ -17,7 +19,7 @@ class DeckDetails extends Component {
         const {deck} = navigation.state.params;
 
         return {
-            title: deck.title
+            title: deck
         };
     };
 
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
     },
     deckSubtitle: {
         fontSize: 20,
-        color: '#999999',
+        color: grey,
         fontWeight: '400',
     },
     actionsContent: {

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {StyleSheet, View, TextInput} from 'react-native';
 
+import {grey} from '../styles/colors';
+
 
 function TextInputField(props) {
     return (
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
     },
     input: {
         borderBottomWidth: 1,
-        borderBottomColor: '#888'
+        borderBottomColor: grey
     }
 });
 

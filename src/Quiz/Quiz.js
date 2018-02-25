@@ -7,6 +7,8 @@ import {selectors} from '../redux/modules/decks';
 
 import {cancelAllScheduled} from '../commons/notification/pushLocalNotification';
 
+import {primary, white} from '../commons/styles/colors';
+
 import TextButton from '../commons/components/TextButton';
 import Container from '../commons/components/Container';
 import Feedback from './Feedback';
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
         padding: 20
     },
     indicator: {
-        backgroundColor: '#4496EC',
+        backgroundColor: primary,
         borderRadius: 15,
         paddingTop: 5,
         paddingBottom: 5,
@@ -153,7 +155,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start'
     },
     indicatorText: {
-        color: '#fff',
+        color: white,
         fontWeight: '600'
     },
     body: {

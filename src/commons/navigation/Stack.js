@@ -2,6 +2,8 @@ import React from 'react';
 
 import {StackNavigator} from 'react-navigation';
 
+import {primary, white} from '../styles/colors';
+
 import NewCard from '../../NewCard/NewCard';
 import Quiz from '../../Quiz/Quiz';
 import DeckDetails from '../../DeckDetails/DeckDetails';
@@ -31,9 +33,9 @@ export default StackNavigator({
 }, {
     navigationOptions: {
         headerBackTitle: null,
-        headerTintColor: '#fff',
+        headerTintColor: white,
         headerStyle: {
-            backgroundColor: '#4496EC',
+            backgroundColor: primary,
         }
     }
 });

@@ -4,8 +4,11 @@ import {TabNavigator} from 'react-navigation';
 
 import {Ionicons, FontAwesome} from '@expo/vector-icons';
 
+import {primary, shadowGrey, white} from '../styles/colors';
+
 import Decks from '../../Decks/Decks';
 import NewDeck from '../../NewDeck/NewDeck';
+
 
 export default TabNavigator({
         Decks: {
@@ -25,11 +28,11 @@ export default TabNavigator({
     },
     {
         tabBarOptions: {
-            activeTintColor: '#4496EC',
+            activeTintColor: primary,
             style: {
                 height: 52,
-                backgroundColor: '#fff',
-                shadowColor: 'rgba(0, 0, 0, 0.24)',
+                backgroundColor: white,
+                shadowColor: shadowGrey,
                 shadowOffset: {
                     width: 0,
                     height: 3

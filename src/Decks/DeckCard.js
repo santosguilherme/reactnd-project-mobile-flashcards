@@ -4,6 +4,8 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import {Ionicons} from '@expo/vector-icons';
 
+import {grey} from '../commons/styles/colors';
+
 
 export default function DeckCard(props) {
     const {deck} = props;
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     deckSubtitle: {
-        color: '#999999',
+        color: grey,
         fontWeight: '400',
     },
     deckIconContent: {}

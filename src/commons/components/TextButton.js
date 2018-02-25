@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 
+import {primary, white} from '../styles/colors';
+
 
 function TextButton({children, onPress, disabled = false, style = {}, variant = 'primary'}) {
     const buttonTextStyle = [styles.container, styles[`${variant}Container`], style, disabled ? styles.disabeld : {}];
@@ -31,21 +33,21 @@ const styles = StyleSheet.create({
         paddingLeft: 25,
         paddingRight: 25,
         borderWidth: 1,
-        borderColor: '#4496EC',
+        borderColor: primary,
     },
     text: {
         textAlign: 'center',
         fontWeight: '500'
     },
     primaryContainer: {
-        backgroundColor: '#4496EC',
+        backgroundColor: primary,
     },
     secondaryContainer: {},
     primary: {
-        color: '#fff',
+        color: white,
     },
     secondary: {
-        color: '#4496EC'
+        color: primary
     },
     disabeld: {
         opacity: 0.7

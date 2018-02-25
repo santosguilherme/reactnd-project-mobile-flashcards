@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {compose} from 'redux';
 import {connect} from 'react-redux';
 
-import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
-
-import DeckCard from './DeckCard';
+import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
 
 import {selectors as decksSelectors} from '../redux/modules/decks';
+
 import Container from '../commons/components/Container';
+
+import DeckCard from './DeckCard';
 
 
 function Decks(props) {
@@ -42,8 +42,20 @@ function Decks(props) {
     );
 }
 
+const styles = StyleSheet.create({
+    itemContainer: {
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 1,
+        paddingTop: 1
+    }
+});
+
 Decks.defaultProps = {
     decks: {}
+};
+
+Decks.propTypes = {
+    decks: PropTypes.object
 };
 
 function mapStateToProps(state) {
@@ -53,12 +65,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Decks);
-
-
-const styles = StyleSheet.create({
-    itemContainer: {
-        borderBottomColor: '#ccc',
-        borderBottomWidth: 1,
-        paddingTop: 1
-    }
-});

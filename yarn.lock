@@ -72,6 +72,13 @@
     lodash "^4.17.4"
     react-native-vector-icons "4.4.2"
 
+"@expo/vector-icons@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-6.3.1.tgz#ffb97cc2343e4a330b44ce3063ee7c8571a6a50d"
+  dependencies:
+    lodash "^4.17.4"
+    react-native-vector-icons "4.5.0"
+
 "@segment/loosely-validate-event@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@segment/loosely-validate-event/-/loosely-validate-event-1.1.2.tgz#d77840999e3f7e43e74b3b0d43391c1526f793b8"
@@ -4688,7 +4695,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -4915,6 +4922,14 @@ react-native-vector-icons@4.4.2:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
+react-native-vector-icons@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.5.0.tgz#6b95619e64f62f05f579f74a01fe5640df95158b"
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.5.10"
+    yargs "^8.0.2"
+
 react-native@0.52.2:
   version "0.52.2"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.52.2.tgz#1ae9a4c4441bd6e54a8ffc8aae4ac2b5c7cccd68"
@@ -4974,7 +4989,7 @@ react-native@0.52.2:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
-react-navigation@^1.1.2:
+react-navigation@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.1.2.tgz#6e041b8a3cd0f5266072df0b52a55117892875f2"
   dependencies:
@@ -4993,6 +5008,17 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
+react-redux@5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
+  dependencies:
+    hoist-non-react-statics "^2.5.0"
+    invariant "^2.0.0"
+    lodash "^4.17.5"
+    lodash-es "^4.17.5"
+    loose-envify "^1.1.0"
+    prop-types "^15.6.0"
+
 react-redux@^5.0.2:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.6.tgz#23ed3a4f986359d68b5212eaaa681e60d6574946"
@@ -5003,17 +5029,6 @@ react-redux@^5.0.2:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
-
-react-redux@^5.0.7:
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
-  dependencies:
-    hoist-non-react-statics "^2.5.0"
-    invariant "^2.0.0"
-    lodash "^4.17.5"
-    lodash-es "^4.17.5"
-    loose-envify "^1.1.0"
-    prop-types "^15.6.0"
 
 react-test-renderer@16.2.0:
   version "16.2.0"
@@ -5111,7 +5126,7 @@ reduce-reducers@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/reduce-reducers/-/reduce-reducers-0.1.2.tgz#fa1b4718bc5292a71ddd1e5d839c9bea9770f14b"
 
-redux-actions@^2.2.1:
+redux-actions@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/redux-actions/-/redux-actions-2.2.1.tgz#d64186b25649a13c05478547d7cd7537b892410d"
   dependencies:
@@ -5126,11 +5141,11 @@ redux-logger@^2.7.4:
   dependencies:
     deep-diff "0.3.4"
 
-redux-persist@^5.9.1:
+redux-persist@5.9.1:
   version "5.9.1"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.9.1.tgz#83bd4abd526ef768f63fceee338fa9d8ed6552d6"
 
-redux@^3.6.0, redux@^3.7.2:
+redux@3.7.2, redux@^3.6.0:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:

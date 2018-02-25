@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {View, Text, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
+
+import {View, Text, StyleSheet} from 'react-native';
 
 import Container from '../commons/components/Container';
 import TextInputField from '../commons/components/TextInputField';

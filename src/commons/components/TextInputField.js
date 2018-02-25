@@ -15,18 +15,6 @@ function TextInputField(props) {
     );
 }
 
-TextInputField.defaultProps = {
-    value: ''
-};
-
-TextInputField.propTypes = {
-    value: PropTypes.any,
-    onChangeText: PropTypes.func.isRequired
-};
-
-export default TextInputField;
-
-
 const styles = StyleSheet.create({
     inputContainer: {
         padding: 10,
@@ -41,3 +29,14 @@ const styles = StyleSheet.create({
         borderBottomColor: '#888'
     }
 });
+
+TextInputField.defaultProps = {
+    value: ''
+};
+
+TextInputField.propTypes = {
+    value: PropTypes.any,
+    onChangeText: PropTypes.func.isRequired
+};
+
+export default TextInputField;

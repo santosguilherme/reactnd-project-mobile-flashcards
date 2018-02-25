@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 
 import TextButton from '../commons/components/TextButton';
-
 import Title from '../commons/components/Title';
 
 

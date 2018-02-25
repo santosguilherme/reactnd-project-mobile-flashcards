@@ -33,8 +33,7 @@ class Quiz extends Component {
         }));
     };
 
-    //TODO: renomear esta função
-    getUpdatedState = (isCorrect) => {
+    updatedQuizState = isCorrect => {
         this.setState(state => {
             const {questionIndex} = state;
             const {deck} = this.props;
@@ -50,24 +49,19 @@ class Quiz extends Component {
                 ? questionIndex + 1
                 : questionIndex;
 
-            if (isCorrect) {
-                newState.corrects = ++state.corrects;
-            }
-
-            if (newState.done) {
-                cancelAllScheduled();
-            }
+            isCorrect && (newState.corrects = ++state.corrects);
+            newState.done && cancelAllScheduled();
 
             return newState;
         });
     };
 
     handleCorrectClick = () => {
-        this.getUpdatedState(true);
+        this.updatedQuizState(true);
     };
 
     handleIncorrectClick = () => {
-        this.getUpdatedState();
+        this.updatedQuizState();
     };
 
     handleRestartQuizClick = () => {

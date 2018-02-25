@@ -57,5 +57,4 @@ TextButton.propTypes = {
     disabled: PropTypes.bool
 };
 
-
 export default TextButton;

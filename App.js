@@ -22,25 +22,24 @@ const Tabs = TabNavigator({
         Decks: {
             screen: Decks,
             navigationOptions: {
-                tabBarLabel: 'Decks',
+                title: 'Flashcards',
                 tabBarIcon: ({tintColor}) => <Ionicons name='ios-albums' size={30} color={tintColor}/>
             }
         },
         NewDeck: {
             screen: NewDeck,
             navigationOptions: {
-                tabBarLabel: 'Add NewDeck',
+                title: 'Add New Deck',
                 tabBarIcon: ({tintColor}) => <FontAwesome name='plus-square' size={30} color={tintColor}/>
             }
         }
     },
     {
-        navigationOptions: {},
         tabBarOptions: {
-            activeTintColor: Platform.OS === 'ios' ? '#ccc' : '#fff',
+            activeTintColor: '#4496EC',
             style: {
-                height: 56,
-                backgroundColor: Platform.OS === 'ios' ? '#fff' : '#ccc',
+                height: 52,
+                backgroundColor: '#fff',
                 shadowColor: 'rgba(0, 0, 0, 0.24)',
                 shadowOffset: {
                     width: 0,
@@ -54,19 +53,15 @@ const Tabs = TabNavigator({
 
 const MainNavigator = StackNavigator({
     Home: {
-        screen: Tabs,
-        navigationOptions: {
-            title: 'Flashcards'
-        }
+        screen: Tabs
     },
     DeckDetails: {
-        screen: DeckDetails,
-        navigationOptions: {}
+        screen: DeckDetails
     },
     NewCard: {
         screen: NewCard,
         navigationOptions: {
-            title: 'Add Card'
+            title: 'Add New Card'
         }
     },
     Quiz: {
@@ -80,7 +75,7 @@ const MainNavigator = StackNavigator({
         headerBackTitle: null,
         headerTintColor: '#fff',
         headerStyle: {
-            backgroundColor: 'red',
+            backgroundColor: '#4496EC',
         }
     }
 });

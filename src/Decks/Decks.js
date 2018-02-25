@@ -58,6 +58,7 @@ export default connect(mapStateToProps)(Decks);
 const styles = StyleSheet.create({
     itemContainer: {
         borderBottomColor: '#ccc',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        paddingTop: 1
     }
 });

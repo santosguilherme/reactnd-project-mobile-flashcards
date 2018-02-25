@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {StyleSheet, View, Text} from 'react-native';
-import DeckCard from '../Decks/DeckCard';
+
+import {selectors} from '../redux/modules/decks';
+
 import TextButton from '../commons/components/TextButton';
 import Container from '../commons/components/Container';
-import {selectors} from '../redux/modules/decks';
+import Title from '../commons/components/Title';
 
 
 class DeckDetails extends Component {
@@ -24,38 +26,92 @@ class DeckDetails extends Component {
     };
 
     handleAddCard = () => {
-        const {deck} = this.props;
+        const {navigation, deck} = this.props;
 
-        this.props.navigation.navigate('NewCard', {deck});
+        navigation.navigate('NewCard', {deck});
     };
 
     handleStartQuiz = () => {
-        const {deck} = this.props;
+        const {navigation, deck} = this.props;
 
-        this.props.navigation.navigate('Quiz', {deck});
+        navigation.navigate('Quiz', {deck});
 
     };
 
-    render() {
+    renderDeckContent() {
         const {deck} = this.props;
 
         return (
+            <View style={styles.deckContent}>
+                <Title text={deck.title}/>
+                <Text style={styles.deckSubtitle}>
+                    {`${deck.questions.length} cards`}
+                </Text>
+            </View>
+        );
+    }
+
+    renderActionsContent() {
+        const {deck} = this.props;
+
+        return (
+            <View style={styles.actionsContent}>
+                <TextButton
+                    onPress={this.handleAddCard}
+                    variant="secondary"
+                >
+                    Add card
+                </TextButton>
+                <TextButton
+                    onPress={this.handleStartQuiz}
+                    disabled={!deck.questions.length}
+                >
+                    Start quiz
+                </TextButton>
+            </View>
+        );
+    }
+
+    render() {
+        return (
             <Container>
-                <View>
-                    <DeckCard deck={deck}/>
-                </View>
-                <View>
-                    <TextButton onPress={this.handleAddCard}>
-                        Add card
-                    </TextButton>
-                    <TextButton onPress={this.handleStartQuiz}>
-                        Start quiz
-                    </TextButton>
+                <View style={styles.content}>
+                    {this.renderDeckContent()}
+                    {this.renderActionsContent()}
                 </View>
             </Container>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    content: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        padding: 20
+    },
+    deckContent: {
+        flex: 1,
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    deckSubtitle: {
+        fontSize: 20,
+        color: '#999999',
+        fontWeight: '400',
+    },
+    actionsContent: {
+        width: '100%',
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'space-around',
+        flexDirection: 'row'
+    }
+});
 
 function mapStateToProps(state, ownProps) {
     const {deck} = ownProps.navigation.state.params;

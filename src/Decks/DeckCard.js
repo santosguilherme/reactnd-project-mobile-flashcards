@@ -2,32 +2,45 @@ import React from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
 
+import {Ionicons} from '@expo/vector-icons';
+
 
 export default function DeckCard(props) {
     const {deck} = props;
 
     return (
-        <View style={styles.deckContent}>
-            <Text style={styles.deckTitle}>
-                {deck.title}
-            </Text>
-            <Text>
-                {`${deck.questions.length} cards`}
-            </Text>
+        <View style={styles.deckContainer}>
+            <View style={styles.deckContent}>
+                <Text style={styles.deckTitle}>
+                    {deck.title}
+                </Text>
+                <Text style={styles.deckSubtitle}>
+                    {`${deck.questions.length} cards`}
+                </Text>
+            </View>
+            <View style={styles.deckIconContent}>
+                <Ionicons name="ios-arrow-forward" size={30} color="#999999"/>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    deckContent: {
+    deckContainer: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20
+        flexDirection: 'row',
+        padding: 15
+    },
+    deckContent: {
+        flex: 1
     },
     deckTitle: {
-        fontSize: 18,
-        fontWeight: '600',
-        marginBottom: 5
-    }
+        fontSize: 16,
+        fontWeight: '500'
+    },
+    deckSubtitle: {
+        color: '#999999',
+        fontWeight: '400',
+    },
+    deckIconContent: {}
 });

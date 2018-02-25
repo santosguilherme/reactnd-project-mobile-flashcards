@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 
-import {Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {NavigationActions} from 'react-navigation';
 
 import {actions as decksActions} from '../redux/modules/decks';
@@ -46,20 +46,48 @@ class NewDeck extends PureComponent {
     };
 
     render() {
+        const {deckTitle} = this.state;
+
         return (
             <Container>
-                <Text>What is the title of your new deck?</Text>
-                <TextInputField
-                    value={this.state.deckTitle}
-                    onChangeText={this.handleChangeDeckTitle}
-                />
-                <TextButton onPress={this.handleSubmitNewDeck}>
-                    Submit
-                </TextButton>
+                <View style={styles.content}>
+                    <Text style={styles.title}>
+                        What is the title of your new deck?
+                    </Text>
+                    <TextInputField
+                        value={deckTitle}
+                        onChangeText={this.handleChangeDeckTitle}
+                    />
+                    <TextButton
+                        onPress={this.handleSubmitNewDeck}
+                        style={styles.button}
+                        disabled={!Boolean(deckTitle)}
+                    >
+                        Submit
+                    </TextButton>
+                </View>
             </Container>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    content: {
+        display: 'flex',
+        alignItems: 'center',
+        flex: 1,
+        padding: 20
+    },
+    title: {
+        textAlign: 'center',
+        fontWeight: '600',
+        fontSize: 30,
+        marginBottom: 20
+    },
+    button: {
+        marginTop: 20
+    }
+});
 
 const mapDispatchToProps = {
     createDeck: decksActions.addDeck

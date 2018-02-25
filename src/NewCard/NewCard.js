@@ -90,7 +90,7 @@ function mapStateToProps(state, ownProps) {
     const {deck} = ownProps.navigation.state.params;
 
     return {
-        deck: selectors.getDeck(state, deck.title)
+        deck: selectors.getDeck(state, deck)
     };
 }
 

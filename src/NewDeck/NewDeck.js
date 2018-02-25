@@ -39,7 +39,7 @@ class NewDeck extends PureComponent {
             index: 1,
             actions: [
                 NavigationActions.navigate({routeName: 'Home'}),
-                NavigationActions.navigate({routeName: 'DeckDetails', params: {deck}})
+                NavigationActions.navigate({routeName: 'DeckDetails', params: {deck: deck.title}})
             ]
         });
         navigation.dispatch(resetAction);

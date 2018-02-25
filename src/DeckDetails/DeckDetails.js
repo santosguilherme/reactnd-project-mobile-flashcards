@@ -28,13 +28,13 @@ class DeckDetails extends Component {
     handleAddCard = () => {
         const {navigation, deck} = this.props;
 
-        navigation.navigate('NewCard', {deck});
+        navigation.navigate('NewCard', {deck: deck.title});
     };
 
     handleStartQuiz = () => {
         const {navigation, deck} = this.props;
 
-        navigation.navigate('Quiz', {deck});
+        navigation.navigate('Quiz', {deck: deck.title});
 
     };
 
@@ -117,7 +117,7 @@ function mapStateToProps(state, ownProps) {
     const {deck} = ownProps.navigation.state.params;
 
     return {
-        deck: selectors.getDeck(state, deck.title)
+        deck: selectors.getDeck(state, deck)
     };
 }
 

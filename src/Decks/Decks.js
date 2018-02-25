@@ -16,7 +16,7 @@ function Decks(props) {
     const {decks} = props;
 
     const handleClickDeck = deck => {
-        props.navigation.navigate('DeckDetails', {deck});
+        props.navigation.navigate('DeckDetails', {deck: deck.title});
     };
 
     const renderItem = ({item}) => {
